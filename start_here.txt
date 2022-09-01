@@ -1,0 +1,31 @@
+# if no gpg key already in github
+gpg --full-generate-key
+
+gpg --list-secret-keys --keyid-format=long
+git config --global user.signingkey _theseckey_
+    # So you can sign your commits with
+    # git commit -S -m "Signed commit"
+
+# CDK with Python
+npm install aws-cdk-lib
+npm install -g aws-cdk
+cdk bootstrap aws://ACCOUNT-NUMBER/REGION
+
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip
+python -m pip install --upgrade virtualenv
+
+mkdir hello-cdk
+cd hello-cdk
+cdk init app --language python
+
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+
+python -m pip install aws-cdk._aws_service_
+
+pip install --upgrade -r requirements.txt
+
+
+cdk synth # creates CF stack
+cdk deploy # deploy the stack
